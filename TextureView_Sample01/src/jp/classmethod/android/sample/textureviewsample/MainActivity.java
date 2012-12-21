@@ -11,9 +11,9 @@ import android.view.Menu;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
+import android.widget.FrameLayout.LayoutParams;
 
 public class MainActivity extends Activity implements SurfaceTextureListener {
-	
 	
 	private MediaPlayer player;
 	private TextureView textureView;
@@ -51,12 +51,16 @@ public class MainActivity extends Activity implements SurfaceTextureListener {
 		Surface embedSurface = new Surface(surface);
 		try {
 			player = new MediaPlayer();
-//			player.setDataSource("http://www.youtube.com/watch?v=UhF4F7VpinE");
 			player.setDataSource("http://daily3gp.com/vids/747.3gp");
 			player.setSurface(embedSurface);
 			player.prepare();
 			player.setAudioStreamType(AudioManager.STREAM_MUSIC);
 			player.start();
+			
+			int videoWidth = player.getVideoWidth();
+			int videoHeight = player.getVideoHeight();
+			
+			textureView.setLayoutParams(new LayoutParams(videoWidth, videoHeight));
 		} catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
