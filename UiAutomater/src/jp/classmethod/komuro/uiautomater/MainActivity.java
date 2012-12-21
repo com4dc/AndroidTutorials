@@ -16,6 +16,7 @@ public class MainActivity extends Activity {
 		
 		// TextureViewをインスタンス化
 		textureView = new FaceDetectTextureView(this);
+		textureView.setRotation(90.0f);
 		// TextureViewを配置
 		setContentView(textureView);
 	}
