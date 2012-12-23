@@ -1,4 +1,4 @@
-package jp.classmethod.komuro.uiautomater.view;
+package jp.classmethod.android.sample.textureviewsample.view;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 /**
  * カメラプレビューの顔認識はNG
@@ -18,7 +18,7 @@ import android.widget.FrameLayout;
  * @author komuro.hiraku
  *
  */
-public class FaceDetectTextureView extends TextureView implements
+public class CameraPreviewTextureView extends TextureView implements
 		SurfaceTextureListener {
 	
 	// カメラ
@@ -28,7 +28,7 @@ public class FaceDetectTextureView extends TextureView implements
 	 * コンストラクタ
 	 * @param context
 	 */
-	public FaceDetectTextureView(Context context) {
+	public CameraPreviewTextureView(Context context) {
 		super(context);
 		
 		// Listenerを設定
@@ -40,14 +40,14 @@ public class FaceDetectTextureView extends TextureView implements
 	 * @param context
 	 * @param attrs
 	 */
-	public FaceDetectTextureView(Context context, AttributeSet attrs) {
+	public CameraPreviewTextureView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		
 		// Listenerを設定
 		setSurfaceTextureListener(this);
 	}
 
-	public FaceDetectTextureView(Context context, AttributeSet attrs,
+	public CameraPreviewTextureView(Context context, AttributeSet attrs,
 			int defStyle) {
 		super(context, attrs, defStyle);
 		
@@ -66,7 +66,7 @@ public class FaceDetectTextureView extends TextureView implements
 		Log.d("Camera Preview Size", "width : " + preViewSize.width + ", height : " + preViewSize.height );
 
 		// プレビュー画面の大きさをTextureViewに設定
-		setLayoutParams(new FrameLayout.LayoutParams(preViewSize.width, preViewSize.height, Gravity.CENTER));
+		setLayoutParams(new LinearLayout.LayoutParams(preViewSize.width, preViewSize.height, Gravity.CENTER));
 		
 		// カメラのプレビューをTextureViewに設定
 		try {
