@@ -10,7 +10,7 @@ import android.media.AudioTrack;
  * @author komuro
  * 
  */
-public class AudioSignal {
+public class DigitalSoundGenerator {
 
 	// とりあえず１オクターブ分の音階を確保
 	public static final double FREQ_C = 261.625565;
@@ -35,7 +35,7 @@ public class AudioSignal {
 	/**
 	 * コンストラクタ
 	 */
-	public AudioSignal(int sampleRate, int bufferSize) {
+	public DigitalSoundGenerator(int sampleRate, int bufferSize) {
 		this.sampleRate = sampleRate;
 		this.bufferSize = bufferSize;
 
@@ -51,12 +51,12 @@ public class AudioSignal {
 	 * @param frequency 鳴らしたい音の周波数
 	 * @return
 	 */
-	public byte[] get8BitSound(double frequency) {
+	public byte[] get8BitSound(double frequency, int soundLengh) {
 		// Bufferを作成
-		byte[] buff = new byte[this.bufferSize];
+		byte[] buff = new byte[bufferSize * soundLengh];
 		for(int i=0; i<buff.length; i++) {
 			double wave = i / (this.sampleRate / frequency);
-			buff[i] = (byte)(Math.round(wave) % 2 == 0 ? 100 : -100 );
+			buff[i] = (byte)(Math.round(wave) % 2 == 0 ? Byte.MAX_VALUE : Byte.MIN_VALUE );
 		}
 		
 		return buff;

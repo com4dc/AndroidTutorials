@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity {
 	
-	private AudioSignal audioSignal;
+	private DigitalSoundGenerator audioSignal;
 	private AudioTrack audioTrack;
 
 	@Override
@@ -17,17 +17,17 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		audioSignal = new AudioSignal(44100, 44100);
+		audioSignal = new DigitalSoundGenerator(44100, 44100);
 		
 		audioTrack = audioSignal.getAudioTrack();
 		
-		final byte[] c5 = audioSignal.get8BitSound(AudioSignal.FREQ_C);
-		final byte[] d5 = audioSignal.get8BitSound(AudioSignal.FREQ_D);
-		final byte[] e5 = audioSignal.get8BitSound(AudioSignal.FREQ_E);
-		final byte[] f5 = audioSignal.get8BitSound(AudioSignal.FREQ_F);
-		final byte[] g5 = audioSignal.get8BitSound(AudioSignal.FREQ_G);
-		final byte[] a5 = audioSignal.get8BitSound(AudioSignal.FREQ_A);
-		final byte[] b5 = audioSignal.get8BitSound(AudioSignal.FREQ_B);
+		final byte[] c5 = audioSignal.get8BitSound(DigitalSoundGenerator.FREQ_C, 2);
+		final byte[] d5 = audioSignal.get8BitSound(DigitalSoundGenerator.FREQ_D, 1);
+		final byte[] e5 = audioSignal.get8BitSound(DigitalSoundGenerator.FREQ_E, 3);
+		final byte[] f5 = audioSignal.get8BitSound(DigitalSoundGenerator.FREQ_F, 1);
+		final byte[] g5 = audioSignal.get8BitSound(DigitalSoundGenerator.FREQ_G, 1);
+		final byte[] a5 = audioSignal.get8BitSound(DigitalSoundGenerator.FREQ_A, 3);
+		final byte[] b5 = audioSignal.get8BitSound(DigitalSoundGenerator.FREQ_B, 2);
 		
 		findViewById(R.id.startMelody).setOnClickListener(new OnClickListener() {
 			
@@ -43,18 +43,13 @@ public class MainActivity extends Activity {
 				
 				audioTrack.play();
 				
-				audioTrack.write(e5, 0, d5.length);
-				audioTrack.write(e5, 0, d5.length);
-				audioTrack.write(e5, 0, d5.length);
-				audioTrack.write(e5, 0, d5.length);
-				audioTrack.write(e5, 0, d5.length);
-				audioTrack.write(e5, 0, d5.length);
-				audioTrack.write(e5, 0, d5.length);
+				audioTrack.write(e5, 0, e5.length);
+				audioTrack.write(e5, 0, e5.length);
 
-				audioTrack.write(g5, 0, f5.length);
+				audioTrack.write(g5, 0, g5.length);
 				audioTrack.write(c5, 0, c5.length);
-				audioTrack.write(d5, 0, c5.length);
-				audioTrack.write(e5, 0, c5.length);
+				audioTrack.write(d5, 0, d5.length);
+				audioTrack.write(e5, 0, e5.length);
 				
 				
 //				audioTrack.write(c5, 0, c5.length);
