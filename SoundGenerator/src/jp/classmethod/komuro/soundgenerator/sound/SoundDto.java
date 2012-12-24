@@ -29,6 +29,4 @@ public class SoundDto {
 	public void setLength(double length) {
 		this.length = length;
 	}
-
-	
 }

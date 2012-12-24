@@ -128,8 +128,6 @@ public class MainActivity extends Activity implements Runnable{
 	protected void onPause() {
 		super.onPause();
 	}
-	
-	
 
 	@Override
 	protected void onDestroy() {
@@ -183,13 +181,14 @@ public class MainActivity extends Activity implements Runnable{
 			audioTrack.stop();
 			audioTrack.reloadStaticData();
 		}
-		
+		// 再生開始
 		audioTrack.play();
-	
+
+		// スコアデータを書き込む
 		for(SoundDto dto : soundList) {
 			audioTrack.write(dto.getSound(), 0, dto.getSound().length);
 		}
-		
+		// 再生停止
 		audioTrack.stop();
 	}
 
