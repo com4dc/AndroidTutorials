@@ -162,7 +162,7 @@ public class MainActivity extends Activity implements Runnable{
 	 * @return 音データ
 	 */
 	public byte[] generateSound(DigitalSoundGenerator gen, double freq, double length) {
-		return gen.get8BitSound(freq, length);
+		return gen.getSound(freq, length);
 	}
 	
 	/**
@@ -189,6 +189,8 @@ public class MainActivity extends Activity implements Runnable{
 		for(SoundDto dto : soundList) {
 			audioTrack.write(dto.getSound(), 0, dto.getSound().length);
 		}
+		
+		audioTrack.stop();
 	}
 
 }

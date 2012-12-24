@@ -68,6 +68,25 @@ public class DigitalSoundGenerator {
 		}
 		
 		return buff;
+		
+	}
+	
+	/**
+	 * 
+	 * @param frequency 鳴らしたい音の周波数
+	 * @param soundLengh 音の長さ
+	 * @return 音声データ
+	 */
+	public byte[] getSound(double frequency, double soundLength) {
+		// byteバッファを作成
+		byte[] buffer = new byte[(int)Math.ceil(bufferSize * soundLength)];
+		for(int i=0; i<buffer.length; i++) {
+			double wave = i / (this.sampleRate / frequency) * (Math.PI * 2);
+			wave = Math.sin(wave);
+			buffer[i] = (byte)(wave > 0.0 ? Byte.MAX_VALUE : Byte.MIN_VALUE);
+		}
+		
+		return buffer;
 	}
 	
 	/**
