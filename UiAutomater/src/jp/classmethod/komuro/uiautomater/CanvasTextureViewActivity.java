@@ -31,6 +31,7 @@ public class CanvasTextureViewActivity extends Activity
         // テクスチャビューを作成して設定
         mTextureView = new TextureView(this);
         mTextureView.setSurfaceTextureListener(this);
+        
         // 透過処理をfalse
         mTextureView.setOpaque(false);
 

@@ -1,24 +1,39 @@
 package jp.classmethod.komuro.uiautomater;
 
-import jp.classmethod.komuro.uiautomater.view.FaceDetectTextureView;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity {
 	
-	/** カメラのプレビューを表示するTextureViewオブジェクト. */ 
-	private FaceDetectTextureView textureView;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		// TextureViewをインスタンス化
-		textureView = new FaceDetectTextureView(this);
-		textureView.setRotation(90.0f);
-		// TextureViewを配置
-		setContentView(textureView);
+		setContentView(R.layout.activity_main);
+		
+		findViewById(R.id.button1).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, CanvasTextureViewActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		findViewById(R.id.button2).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, FaceDetectActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	@Override

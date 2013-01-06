@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
+	// Log用のTAG
+	private static final String TAG = MainActivity.class.getSimpleName();
+	
 	// BackボタンPress時の有効タイマー
 	private CountDownTimer keyEventTimer;
 	
@@ -21,11 +24,12 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		// onFinish(), onTick()
 		keyEventTimer = new CountDownTimer(1000, 100) {
 			
 			@Override
 			public void onTick(long millisUntilFinished) {
-				Log.d("onTick", "call onTick method");
+				Log.d(TAG, "call onTick method");
 			}
 			
 			@Override
@@ -47,22 +51,22 @@ public class MainActivity extends Activity {
 		
 		// Backボタン検知
 		if(event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-			
-			keyEventTimer.cancel();
-			keyEventTimer.start();
-			
 			if(!pressed) {
+				// Timerを開始
+				keyEventTimer.cancel();
+				keyEventTimer.start();
+			
+				// 終了する場合, もう一度タップするようにメッセージを出力する
 				Toast.makeText(this, "終了する場合は、もう一度バックボタンを押してください", Toast.LENGTH_SHORT).show();
 				pressed = true;
 				return false;
 			}
 			
+			// pressed=trueの時、通常のBackボタンで終了処理.
 			return super.dispatchKeyEvent(event);
 		}
-		
+		// Backボタンに関わらないボタンが押された場合は、通常処理.
 		return super.dispatchKeyEvent(event);
 	}
-	
-	
 
 }
