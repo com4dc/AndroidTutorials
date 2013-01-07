@@ -3,7 +3,6 @@ package jp.classmethod.komuro.uiautomater;
 import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -34,6 +33,8 @@ public class CanvasTextureViewActivity extends Activity
         
         // 透過処理をfalse
         mTextureView.setOpaque(false);
+        
+//        mTextureView.setRotation(45.0f);
 
         // 500x500でViewを作成
         content.addView(mTextureView, new FrameLayout.LayoutParams(500, 500, Gravity.CENTER));
@@ -103,7 +104,8 @@ public class CanvasTextureViewActivity extends Activity
                 try {
                 	
                 	// Canvasに四角形を描画
-                    canvas.drawColor(0x00000000, PorterDuff.Mode.CLEAR);
+//                    canvas.drawColor(0xff000000, PorterDuff.Mode.CLEAR);
+                	canvas.drawColor(0xff000000);
                     canvas.drawRect(x, y, x + 20.0f, y + 20.0f, paint);
                 } finally {
                     mSurface.unlockCanvasAndPost(canvas);
