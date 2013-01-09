@@ -69,6 +69,8 @@ public class CameraScreenActivity extends Activity implements SurfaceTextureList
 		// SurfaceTextureListenerを設定
 		cameraTextureView.setSurfaceTextureListener(this);
 		
+		cameraTextureView.setAlpha(0.5f);
+		
 		// 初めは見えない
 		laughingmanView.setRotationY(90.0f);
 		
