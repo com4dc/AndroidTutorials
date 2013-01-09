@@ -7,7 +7,7 @@ import android.view.SurfaceHolder.Callback2;
 import android.view.SurfaceView;
 import android.widget.TextView;
 
-public class ViewHolder2 implements Callback2  {
+public class SurfaceViewHolder implements Callback2  {
 	TextView labelText;
 	SurfaceView surfaceView;
 	

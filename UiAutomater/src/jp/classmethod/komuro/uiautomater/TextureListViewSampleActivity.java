@@ -3,7 +3,7 @@ package jp.classmethod.komuro.uiautomater;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.classmethod.komuro.uiautomater.adapter.ItemListAdapter;
+import jp.classmethod.komuro.uiautomater.adapter.TextureViewItemListAdapter;
 import jp.classmethod.komuro.uiautomater.dto.ItemDto;
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -24,7 +24,7 @@ public class TextureListViewSampleActivity extends ListActivity {
 		objects.add(new ItemDto("005"));
 		objects.add(new ItemDto("006"));
 		objects.add(new ItemDto("007"));
-		ItemListAdapter adapter = new ItemListAdapter(this, 0, objects);
+		TextureViewItemListAdapter adapter = new TextureViewItemListAdapter(this, 0, objects);
 		
 		getListView().setAdapter(adapter);
 	}

@@ -6,7 +6,7 @@ import android.graphics.SurfaceTexture;
 import android.view.TextureView;
 import android.widget.TextView;
 
-public class ViewHolder implements TextureView.SurfaceTextureListener  {
+public class TextureViewHolder implements TextureView.SurfaceTextureListener  {
 	TextView labelText;
 	TextureView textureView;
 	

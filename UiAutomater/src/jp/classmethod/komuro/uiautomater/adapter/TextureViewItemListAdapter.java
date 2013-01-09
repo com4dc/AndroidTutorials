@@ -12,44 +12,44 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class ItemListAdapter extends ArrayAdapter<ItemDto> {
+public class TextureViewItemListAdapter extends ArrayAdapter<ItemDto> {
 	
 	private Context context;
 
-	public ItemListAdapter(Context context, int textViewResourceId) {
+	public TextureViewItemListAdapter(Context context, int textViewResourceId) {
 		super(context, textViewResourceId);
 		
 		this.context = context;
 	}
 
-	public ItemListAdapter(Context context, int resource, int textViewResourceId) {
+	public TextureViewItemListAdapter(Context context, int resource, int textViewResourceId) {
 		super(context, resource, textViewResourceId);
 		
 		this.context = context;
 	}
 
-	public ItemListAdapter(Context context, int textViewResourceId,
+	public TextureViewItemListAdapter(Context context, int textViewResourceId,
 			ItemDto[] objects) {
 		super(context, textViewResourceId, objects);
 		
 		this.context = context;
 	}
 
-	public ItemListAdapter(Context context, int textViewResourceId,
+	public TextureViewItemListAdapter(Context context, int textViewResourceId,
 			List<ItemDto> objects) {
 		super(context, textViewResourceId, objects);
 		
 		this.context = context;
 	}
 
-	public ItemListAdapter(Context context, int resource,
+	public TextureViewItemListAdapter(Context context, int resource,
 			int textViewResourceId, ItemDto[] objects) {
 		super(context, resource, textViewResourceId, objects);
 		
 		this.context = context;
 	}
 
-	public ItemListAdapter(Context context, int resource,
+	public TextureViewItemListAdapter(Context context, int resource,
 			int textViewResourceId, List<ItemDto> objects) {
 		super(context, resource, textViewResourceId, objects);
 		
@@ -58,19 +58,19 @@ public class ItemListAdapter extends ArrayAdapter<ItemDto> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		ViewHolder holder;
+		TextureViewHolder holder;
 		
 		if(convertView == null) {
 			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.listview_item_layout, parent, false);
 			
-			holder = new ViewHolder();
+			holder = new TextureViewHolder();
 			holder.labelText = (TextView) convertView.findViewById(R.id.label_text);
 			holder.textureView = (TextureView) convertView.findViewById(R.id.texture_view);
 			
 			convertView.setTag(holder);
 		} else {
-			holder = (ViewHolder) convertView.getTag();
+			holder = (TextureViewHolder) convertView.getTag();
 		}
 		
 		final ItemDto item = getItem(position);
