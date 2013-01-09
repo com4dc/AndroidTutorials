@@ -25,6 +25,8 @@
         <activity android:name=".CanvasTextureViewActivity">
         </activity>
         <activity android:name=".FaceDetectActivity"></activity>
+        <activity android:name=".TextureListViewSampleActivity"></activity>
+        <activity android:name=".SurfaceListViewSampleActivity"></activity>
     </application>
 
 </manifest>

@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, CanvasTextureViewActivity.class);
+				intent.setClass(MainActivity.this, FaceDetectActivity.class);
 				startActivity(intent);
 			}
 		});
@@ -30,7 +30,27 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, FaceDetectActivity.class);
+				intent.setClass(MainActivity.this, CanvasTextureViewActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		findViewById(R.id.button3).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, TextureListViewSampleActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		findViewById(R.id.button4).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, SurfaceListViewSampleActivity.class);
 				startActivity(intent);
 			}
 		});
