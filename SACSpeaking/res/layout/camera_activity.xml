@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/screen_layout"
+    >
+    <TextureView 
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/camera_textureview"
+        />
+
+    <!--  
+     <jp.classmethod.komuro.sample.sacspeaking.SpeakingTextureView
+         android:id="@+id/laughingman_icon"
+         android:layout_width="100dip"
+         android:layout_height="100dip" />
+    -->
+</FrameLayout>
