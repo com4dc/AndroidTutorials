@@ -1,7 +1,6 @@
 package jp.classmethod.komuro.sample.sacspeaking.view;
 
 import jp.classmethod.komuro.sample.sacspeaking.R;
-import jp.classmethod.komuro.sample.sacspeaking.R.drawable;
 import jp.classmethod.komuro.sample.sacspeaking.util.ImageUtil;
 import android.content.Context;
 import android.content.res.Resources;
@@ -59,7 +58,8 @@ public class SpeakingTextureView extends TextureView implements SurfaceTextureLi
 	public void onSurfaceTextureAvailable(SurfaceTexture surfaceTexture, int width,
 			int height) {
 		
-		setAlpha(0.4f);
+		// アルファ値で透明度を設定
+		setAlpha(0.85f);
 		
 		Log.d("SpeakingTextureView", "start Rendering Thread");
 		thread = new RenderingThread(this, getResources());
@@ -113,10 +113,11 @@ public class SpeakingTextureView extends TextureView implements SurfaceTextureLi
 			Paint paint = new Paint();
             paint.setColor(Color.BLACK);
             
-            Bitmap bitmap = BitmapFactory.decodeResource(resource, R.drawable.laughingman);
+            // 笑い男アイコンを読み込む
+            Bitmap laughingmanSrc = BitmapFactory.decodeResource(resource, R.drawable.laughingman);
             int resizeWidth = textureView.getWidth();
             int resizeHeight = textureView.getHeight();
-            Bitmap resizedBmp = ImageUtil.resizeImage(bitmap, resizeWidth, resizeHeight);
+            Bitmap resizedBmp = ImageUtil.resizeImage(laughingmanSrc, resizeWidth, resizeHeight);
             
             while(running && !isInterrupted()) {
             	Canvas canvas = textureView.lockCanvas();
@@ -124,7 +125,6 @@ public class SpeakingTextureView extends TextureView implements SurfaceTextureLi
 	            	if(canvas != null) {
 	            		// 描画
 	            		canvas.drawColor(0xff000000, PorterDuff.Mode.CLEAR);
-//	            		canvas.drawRect(10.f, 10.f, 10.f, 10.f, paint);
 	            		canvas.drawBitmap(resizedBmp, 0, 0, paint);
 	            	}
             	} finally {

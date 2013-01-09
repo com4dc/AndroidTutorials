@@ -3,8 +3,8 @@ package jp.classmethod.komuro.sample.sacspeaking;
 import java.io.IOException;
 import java.util.List;
 
+import jp.classmethod.komuro.sample.sacspeaking.gravity.GravityView;
 import jp.classmethod.komuro.sample.sacspeaking.view.SpeakingTextureView;
-
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.app.Activity;
@@ -20,7 +20,6 @@ import android.view.TextureView.SurfaceTextureListener;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import android.widget.Toast;
 
 public class CameraScreenActivity extends Activity implements SurfaceTextureListener {
 	
@@ -30,9 +29,12 @@ public class CameraScreenActivity extends Activity implements SurfaceTextureList
 	/** カメラプレビュー表示用TextureView */
 	private TextureView cameraTextureView;
 	
+	/** Speaking View */
 	private TextureView laughingmanView;
 	private int laughingmanTop;
 	private int laughingmanLeft;
+	
+	private GravityView gravityView;
 	
 	private boolean showLaughingman = false;
 	
@@ -58,6 +60,11 @@ public class CameraScreenActivity extends Activity implements SurfaceTextureList
 		
 		LayoutParams params = new LayoutParams(300, 300, Gravity.CENTER_VERTICAL);
 		layout.addView(laughingmanView, params);
+		
+		// GravityViewの生成
+		gravityView = new GravityView(this);
+		LayoutParams gViewParams = new LayoutParams(300, 300, Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+		layout.addView(gravityView, gViewParams);
 		
 		// SurfaceTextureListenerを設定
 		cameraTextureView.setSurfaceTextureListener(this);
@@ -104,6 +111,7 @@ public class CameraScreenActivity extends Activity implements SurfaceTextureList
 		camera.stopPreview();
 		camera.release();
 		
+		Log.d(TAG, "onSurfaceTextureDestroyed()#release Resources");
 		return true;
 	}
 
@@ -122,7 +130,6 @@ public class CameraScreenActivity extends Activity implements SurfaceTextureList
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if(event.getAction() == MotionEvent.ACTION_DOWN) {
-			Toast.makeText(this, "Tap", Toast.LENGTH_SHORT).show();
 			
 			// 回転軸を0に設定
 			laughingmanView.setPivotX(0.0f);
@@ -142,9 +149,11 @@ public class CameraScreenActivity extends Activity implements SurfaceTextureList
 					@Override
 					public void onAnimationEnd(Animator animation) {
 						// 回転軸を画像の中心に設定
-						laughingmanView.setPivotX(laughingmanTop + 150);
-						laughingmanView.setPivotY(laughingmanLeft + 150);
-						laughingmanView.animate().rotation(360.0f).setDuration(10000).start();
+//						laughingmanView.setPivotX(laughingmanTop + 150);
+//						laughingmanView.setPivotY(laughingmanLeft + 150);
+//						
+//						// Property Animationの実行
+//						laughingmanView.animate().rotation(360.0f).setInterpolator(new LinearInterpolator()).setDuration(10000).start();
 					}
 					
 					@Override
