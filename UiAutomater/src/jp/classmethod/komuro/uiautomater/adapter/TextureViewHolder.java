@@ -3,10 +3,14 @@ package jp.classmethod.komuro.uiautomater.adapter;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.SurfaceTexture;
+import android.util.Log;
 import android.view.TextureView;
 import android.widget.TextView;
 
 public class TextureViewHolder implements TextureView.SurfaceTextureListener  {
+	
+	public static final String TAG = TextureViewHolder.class.getSimpleName();
+	
 	TextView labelText;
 	TextureView textureView;
 	
@@ -21,6 +25,7 @@ public class TextureViewHolder implements TextureView.SurfaceTextureListener  {
 	}
 	@Override
 	public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+		Log.d(TAG, "onSurfaceTextureDestroyed()");
 		// レンダリングスレッド委
         if (mThread != null) mThread.stopRendering();
         return true;

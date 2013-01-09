@@ -2,12 +2,16 @@ package jp.classmethod.komuro.uiautomater.adapter;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback2;
 import android.view.SurfaceView;
 import android.widget.TextView;
 
 public class SurfaceViewHolder implements Callback2  {
+	
+	public static final String TAG = SurfaceViewHolder.class.getSimpleName();
+	
 	TextView labelText;
 	SurfaceView surfaceView;
 	
@@ -100,6 +104,7 @@ public class SurfaceViewHolder implements Callback2  {
 	}
 	@Override
 	public void surfaceDestroyed(SurfaceHolder arg0) {
+		Log.d(TAG, "surfaceDestroyed()");
 		// レンダリングスレッド委
         if (mThread != null) mThread.stopRendering();
 	}
