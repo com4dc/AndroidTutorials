@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.TextureView;
 import android.widget.FrameLayout;
 
@@ -18,8 +19,10 @@ import android.widget.FrameLayout;
  */
 public class CanvasTextureViewActivity extends Activity
         implements TextureView.SurfaceTextureListener {
+	
     private TextureView mTextureView;
     private CanvasTextureViewActivity.RenderingThread mThread;
+    private boolean tilt = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,23 @@ public class CanvasTextureViewActivity extends Activity
         content.addView(mTextureView, new FrameLayout.LayoutParams(500, 500, Gravity.CENTER));
         setContentView(content);
     }
-
+    
     @Override
+	public boolean onTouchEvent(MotionEvent event) {
+    	
+    	if(event.getAction() == MotionEvent.ACTION_DOWN) {
+    		if(!tilt) {
+    			mTextureView.setRotation(45.f);
+    		} else {
+    			mTextureView.animate().rotation(0.f).setDuration(1000).start();
+    		}
+    		tilt = !tilt;
+    	}
+    	
+		return super.onTouchEvent(event);
+	}
+
+	@Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
     	
     	// TextureView活性化時にCallされる
