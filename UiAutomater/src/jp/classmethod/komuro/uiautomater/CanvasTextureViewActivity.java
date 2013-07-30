@@ -8,7 +8,11 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.TextureView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.FrameLayout;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 /**
  * <ul>
@@ -23,6 +27,10 @@ public class CanvasTextureViewActivity extends Activity
     private TextureView mTextureView;
     private CanvasTextureViewActivity.RenderingThread mThread;
     private boolean tilt = false;
+    
+    private boolean opaque = false;
+    private boolean mode = false;
+    private ToggleButton toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +42,24 @@ public class CanvasTextureViewActivity extends Activity
         mTextureView = new TextureView(this);
         mTextureView.setSurfaceTextureListener(this);
         
-        // 透過処理をfalse
-        mTextureView.setOpaque(false);
+        toggle = new ToggleButton(this);
+        toggle.setTextOn("Set Alpha");
+        toggle.setTextOff("Set Rotate");
+        toggle.setChecked(false);
+        toggle.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				mode = isChecked;
+			}
+		});
         
-//        mTextureView.setRotation(45.0f);
-
+        // 透過処理をtrue
+        mTextureView.setOpaque(true);
+        
         // 500x500でViewを作成
         content.addView(mTextureView, new FrameLayout.LayoutParams(500, 500, Gravity.CENTER));
+        content.addView(toggle, new FrameLayout.LayoutParams(200,200, Gravity.TOP));
         setContentView(content);
     }
     
@@ -48,12 +67,26 @@ public class CanvasTextureViewActivity extends Activity
 	public boolean onTouchEvent(MotionEvent event) {
     	
     	if(event.getAction() == MotionEvent.ACTION_DOWN) {
-    		if(!tilt) {
-    			mTextureView.setRotation(45.f);
+    		
+    		if(mode) {
+    			Toast.makeText(this, "Set Alpha [TextureView]", Toast.LENGTH_SHORT).show();
+    			if(!opaque) {
+    				mTextureView.setAlpha(0.2f);
+    			}
+    			else {
+    				mTextureView.animate().alpha(1.0f).setDuration(1000).start();
+    			}
+    			opaque = !opaque;
     		} else {
-    			mTextureView.animate().rotation(0.f).setDuration(1000).start();
+    			Toast.makeText(this, "Set Rotate [TextureView]", Toast.LENGTH_SHORT).show();
+    			if(!tilt) {
+        			mTextureView.setRotation(45.f);
+        		} else {
+        			mTextureView.animate().rotation(0.f).setDuration(1000).start();
+        		}
+        		tilt = !tilt;
     		}
-    		tilt = !tilt;
+    		
     	}
     	
 		return super.onTouchEvent(event);
