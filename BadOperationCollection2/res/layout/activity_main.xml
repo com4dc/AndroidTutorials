@@ -21,6 +21,7 @@
 		    android:layout_width="0dip"
 		    android:layout_height="wrap_content"
 		    android:layout_weight="1"
+		    android:id="@+id/add_fragment"
 		    android:layout_gravity="center_vertical"
 		    android:text="Add Fragment"
 		    />
@@ -28,9 +29,20 @@
 		    android:layout_width="0dip"
 		    android:layout_height="wrap_content"
 		    android:layout_weight="1"
+		    android:id="@+id/clear_backstack"
 		    android:layout_gravity="center_vertical"
 		    android:text="Clear BackStack"
 		    />
+		<Button 
+		    android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:id="@+id/send_notification"
+		    android:layout_gravity="center_vertical"
+		    android:text="Set Notification and Start Async"
+		    android:layout_marginLeft="10dip"
+		    />
+		
 	</LinearLayout>
 	
 	<FrameLayout
