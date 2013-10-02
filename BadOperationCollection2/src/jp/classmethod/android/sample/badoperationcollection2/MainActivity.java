@@ -97,6 +97,19 @@ public class MainActivity extends Activity implements LoaderCallbacks<String> {
 
 	@Override
 	public void onLoadFinished(Loader<String> loader, String result) {
+		
+		Bundle argument = new Bundle();
+		argument.putString(SampleFragment.FRAGMENT_ID_KEY, "Fragment#" + fragmentCount++);
+
+		SampleFragment fragment = new SampleFragment();
+		fragment.setArguments(argument);
+		
+		FragmentTransaction ft = getFragmentManager().beginTransaction();
+		ft.replace(R.id.fragment_container, fragment);
+		ft.addToBackStack(null);
+		ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+		ft.commit();
+		
 		Toast.makeText(self, "Loader Task Finished", Toast.LENGTH_SHORT).show();
 	}
 
