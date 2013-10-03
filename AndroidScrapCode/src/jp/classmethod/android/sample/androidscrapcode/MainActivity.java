@@ -26,6 +26,10 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+//				Intent intent = new Intent();
+//				intent.setClassName("com.omms", "com.omms.activity.SplashActivity");
+//				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//				startActivity(intent);
 			}
 		});
 		

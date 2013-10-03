@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        >
+        <TextView 
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="項目1："
+            android:layout_weight="1"
+            />
+        <EditText 
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:hint="項目１"
+            android:id="@+id/category_01_value"
+            />
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        >
+        <TextView 
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="項目2："
+            android:layout_weight="1"
+            />
+        <EditText 
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:hint="項目2"
+            android:id="@+id/category_02_value"
+            />
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        >
+        <Button 
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:layout_margin="10dip"
+            android:id="@+id/call_method"
+            android:text="Call setArguments()"
+            />
+	</LinearLayout>
+</LinearLayout>
