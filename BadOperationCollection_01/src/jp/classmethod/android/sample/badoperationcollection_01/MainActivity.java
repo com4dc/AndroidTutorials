@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
 				Bundle bundle = new Bundle();
 				bundle.putString("category_01", "タンゴ");
 				bundle.putString("category_02", "イエーガー");
+				// Bundleを設定してFragmentの初期値を渡す
 				fragment.setArguments(bundle);
 				
 				// Fragmentを表示

@@ -21,9 +21,9 @@ public class FirstFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
+		// 渡ってきたBundleから初期値を設定
 		Bundle bundle = getArguments();
 		String category01Val = bundle.getString("category_01");
-		
 		String category02Val = bundle.getString("category_02");
 		
 		category01.setText(category01Val);
@@ -45,13 +45,13 @@ public class FirstFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
+				// 現在入力されてる状態をBundleに格納する
 				Bundle bundle = newFragmentSetting();
 				setArguments(bundle);
 			}
 		});
 		
 		category01 = (EditText) view.findViewById(R.id.category_01_value);
-		
 		category02 = (EditText) view.findViewById(R.id.category_02_value);
 		
 		return view;
